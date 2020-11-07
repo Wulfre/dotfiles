@@ -1,0 +1,19 @@
+# Prompt
+export PS1='\e[32m$(whoami)@\e[32m$(uname -n)\e[35m::\e[34m$PWD\n\e[m› '
+
+# Make programs with color options have color.
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Make all file modifications verbose.
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+
+# Prevents accidentally clobbering files.
+alias mkdir='mkdir -p'
+
+# Aliases
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+test -r $HOME/.dir_colors && eval $(dircolors $HOME/.dir_colors)
