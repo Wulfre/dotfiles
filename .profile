@@ -11,4 +11,4 @@ export ENV="$XDG_CONFIG_HOME/ash/.ashrc"
 export HISTFILE="$XDG_DATA_HOME/ash_history"
 
 # WSL variables.
-grep -iq microsoft /proc/version && export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+grep -iq microsoft /proc/version && export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0
