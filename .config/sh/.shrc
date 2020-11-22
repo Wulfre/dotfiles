@@ -1,0 +1,20 @@
+# Set custom prompt.
+export PS1='\e[32m$(whoami)@\e[32m$(uname -n)\e[35m::\e[34m$PWD\n\e[m› '
+
+# Set nord colors for ls.
+test -r $XDG_CONFIG_HOME/ls/dir_colors && eval $(dircolors $XDG_CONFIG_HOME/ls/dir_colors)
+
+# Make programs with color options have color.
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Make file modifications interactive and verbose.
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+
+# Only create directories if they do not already exist.
+alias mkdir='mkdir -p'
+
+# Aliases.
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
