@@ -1,0 +1,18 @@
+#!/bin/sh
+
+USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
+USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
+ALTUSERXSESSION="$XDG_CACHE_HOME/x11/xsession"
+ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
+
+if test -d /etc/X11/xinit/xinitrc.d ; then
+    for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+        test -x "$f" && . "$f"
+    done
+    unset f
+fi
+
+test -f $XDG_CONFIG_HOME/x11/xresources && xrdb -load $XDG_CONFIG_HOME/x11/xresources
+
+xsetroot -solid "#3b4252" &
+exec bspwm
