@@ -6,7 +6,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# Ash variables.
+# x11 cleanup.
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+alias startx='startx "$XDG_CONFIG_HOME/x11/xinitrc"'
+
+# Shell cleanup.
 export ENV="$XDG_CONFIG_HOME/sh/.shrc"
 export HISTFILE="$XDG_DATA_HOME/sh_history"
 
