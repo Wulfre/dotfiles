@@ -21,6 +21,7 @@ if status is-interactive
     # Global interactive-only config
     fundle plugin "meaningful-ooo/sponge"
     fundle plugin "jethrokuan/z"
+    fundle plugin "z11i/github-copilot-cli.fish"
     fundle init
 
     starship init fish | source
