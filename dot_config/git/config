@@ -1,10 +1,10 @@
+[format]
+	pretty = %C(yellow)%h %C(cyan)%cr %C(magenta)%an %C(reset)%s
 [core]
 	ignorecase = false
 [init]
 	defaultBranch = main
 [fetch]
 	prune = true
-[format]
-	pretty = %C(yellow)%h %C(cyan)%cr %C(magenta)%an %C(reset)%s
-[safe]
-	directory = /mnt/workspace
+[pull]
+	rebase = true
