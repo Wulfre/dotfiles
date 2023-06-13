@@ -1,24 +1,17 @@
-# Global always-use config
-export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+# Login
+set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
+switch (uname -s)
+    case "Linux"
+        set -gx PNPM_HOME $HOME/.local/share/pnpm
+    case "Darwin" # MacOS
+        set -gx PNPM_HOME $HOME/Library/pnpm
+end
+
+# Interactive
 if status is-interactive
-    # Linux-only interactive-only config
-    if test $(uname -s) = "Linux"
-        set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-        if not string match -q -- $PNPM_HOME $PATH
-            set -gx PATH "$PNPM_HOME" $PATH
-        end
-    end
+    contains -- $PATH $PNPM_HOME || set -gx PATH $PNPM_HOME $PATH
 
-    # MacOS-only interactive-only config
-    if test $(uname -s) = "Darwin"
-        set -gx PNPM_HOME "$HOME/Library/pnpm"
-        if not string match -q -- $PNPM_HOME $PATH
-            set -gx PATH "$PNPM_HOME" $PATH
-        end
-    end
-
-    # Global interactive-only config
     fundle plugin "meaningful-ooo/sponge"
     fundle plugin "jethrokuan/z"
     fundle plugin "z11i/github-copilot-cli.fish"
