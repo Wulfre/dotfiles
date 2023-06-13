@@ -1,5 +1,10 @@
 function dockernuke
-    docker ps -a -q | xargs docker kill -f
-    docker ps -a -q | xargs docker rm -f
-    docker images | awk '{print $3}' | xargs docker rmi -f
+    # Kill running containers
+    docker container kill $(docker container ls -aq)
+
+    # Remove stopped containers
+    docker container rm $(docker container ls -aq)
+
+    # Delete unused images
+    docker system prune -af
 end
