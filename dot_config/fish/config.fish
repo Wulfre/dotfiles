@@ -13,9 +13,9 @@ if status is-interactive
     contains -- $PATH $PNPM_HOME || set -gx PATH $PNPM_HOME $PATH
 
     fundle plugin "meaningful-ooo/sponge"
-    fundle plugin "jethrokuan/z"
     fundle plugin "z11i/github-copilot-cli.fish"
     fundle init
 
+    zoxide init fish | source
     starship init fish | source
 end
