@@ -1,3 +1,3 @@
 function cat
-    bat $argv
+    bat --theme=base16 $argv
 end
