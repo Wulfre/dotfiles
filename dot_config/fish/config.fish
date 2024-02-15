@@ -1,15 +1,17 @@
-# Login
-set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
+# login
+set -gx GNU_SED /usr/local/opt/gnu-sed/libexec/gnubin
+set -gx PNPM_HOME $HOME/.local/share/pnpm
 
-set -gx USER_BIN "$HOME/.local/bin/"
+contains -- $PATH $PNPM_HOME || set -gx PATH $PNPM_HOME $PATH
 
-# Interactive
+# interactive
 if status is-interactive
-    contains -- $PATH $USER_BIN || set -gx PATH $USER_BIN $PATH
+    set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
-    fundle plugin "meaningful-ooo/sponge"
-    fundle init
+    contains -- $PATH $HOME/.local/bin || set -gx PATH $HOME/.local/bin $PATH
+    contains -- $PATH $GNU_SED || set -gx PATH $GNU_SED $PATH
 
     zoxide init fish | source
     starship init fish | source
+    thefuck --alias | source
 end
